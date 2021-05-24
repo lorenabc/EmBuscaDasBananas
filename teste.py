@@ -2,6 +2,7 @@ import pygame
 import random 
 
 pygame.init()
+pygame.mixer.init()
 
 WIDTH = 600
 HEIGHT = 700
@@ -28,6 +29,12 @@ pedra_img = pygame.image.load('img/stone-0.png').convert_alpha()
 pedra_img = pygame.transform.scale(pedra_img,(PEDRA_WIDTH,PEDRA_HEIGHT))
 
 texto_pontos = pygame.font.Font('font/PressStart2P.ttf',28)
+
+# Carrega os sons do jogo
+#pygame.mixer.music.load('sons/snd/tgfcoder-FrozenJam-SeamlessLoop.ogg')
+pygame.mixer.music.set_volume(0.4)
+som_pedra = pygame.mixer.Sound('sons/fall.wav')
+som_banana = pygame.mixer.Sound('sons/banana.ogg')
 
 class Macaco(pygame.sprite.Sprite):
     def  __init__(self,img):
@@ -142,12 +149,14 @@ while game:
         pedra = Pedra(pedra_img)
         all_sprites.add(pedra)
         all_pedra.add(pedra)
+        som_pedra.play()
 
     for bananas in pontuacao:
         pontuacao_inicial += 1
         banana = Banana(banana_img)
         all_sprites.add(banana)
         all_banana.add(banana)
+        som_banana.play()
 
     window.fill((0,0,0))
     window.blit(background,(0,0))
