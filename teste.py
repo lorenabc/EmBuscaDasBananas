@@ -4,37 +4,43 @@ import random
 pygame.init()
 pygame.mixer.init()
 
-WIDTH = 600
-HEIGHT = 700
+WIDTH = 400
+HEIGHT = 500
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Macaquinho')
 
-#assets
 BANANA_WIDTH = 30
 BANANA_HEIGHT = 38
 MACACO_WIDTH = 90
 MACACO_HEIGHT = 72
 PEDRA_WIDTH = 30
 PEDRA_HEIGHT = 38
-background = pygame.image.load('img/floresta1.png').convert_alpha()
-background = pygame.transform.scale(background,(WIDTH, HEIGHT))
 
-banana_img = pygame.image.load('img/banana.png').convert_alpha()
-banana_img = pygame.transform.scale(banana_img,(BANANA_WIDTH,BANANA_HEIGHT))
+#assets
+def load_assets ():
+    assets = {}
 
-macaco_img = pygame.image.load('img/macaco.png').convert_alpha()
-macaco_img = pygame.transform.scale(macaco_img,(MACACO_WIDTH,MACACO_HEIGHT))
+    assets['background'] = pygame.image.load('assets/img/floresta1.png').convert_alpha()
+    assets['background'] = pygame.transform.scale(assets['background'],(WIDTH, HEIGHT))
 
-pedra_img = pygame.image.load('img/stone-0.png').convert_alpha()
-pedra_img = pygame.transform.scale(pedra_img,(PEDRA_WIDTH,PEDRA_HEIGHT))
+    assets['banana_img'] = pygame.image.load('assets/img/banana.png').convert_alpha()
+    assets['banana_img'] = pygame.transform.scale(assets['banana_img'],(BANANA_WIDTH,BANANA_HEIGHT))
 
-texto_pontos = pygame.font.Font('font/PressStart2P.ttf',28)
+    assets['macaco_img'] = pygame.image.load('assets/img/macaco.png').convert_alpha()
+    assets['macaco_img'] = pygame.transform.scale(assets['macaco_img'],(MACACO_WIDTH,MACACO_HEIGHT))
 
-# Carrega os sons do jogo
-#pygame.mixer.music.load('sons/snd/tgfcoder-FrozenJam-SeamlessLoop.ogg')
-pygame.mixer.music.set_volume(0.4)
-som_pedra = pygame.mixer.Sound('sons/fall.wav')
-som_banana = pygame.mixer.Sound('sons/banana.ogg')
+    assets['pedra_img'] = pygame.image.load('assets/img/stone-0.png').convert_alpha()
+    assets['pedra_img'] = pygame.transform.scale(assets['pedra_img'],(PEDRA_WIDTH,PEDRA_HEIGHT))
+
+    assets['texto_pontos'] = pygame.font.Font('assets/font/PressStart2P.ttf',28)
+
+    # Carrega os sons do jogo
+    #pygame.mixer.music.load('sons/snd/tgfcoder-FrozenJam-SeamlessLoop.ogg')
+    pygame.mixer.music.set_volume(0.4)
+    assets['som_pedra'] = pygame.mixer.Sound('assets/sons/fall.wav')
+    assets['som_banana'] = pygame.mixer.Sound('assets/sons/banana.ogg')
+
+    return assets
 
 class Macaco(pygame.sprite.Sprite):
     def  __init__(self,img):
@@ -99,23 +105,25 @@ class Pedra(pygame.sprite.Sprite):
             self.speedy = random.randint(2, 9)
 
 game = True
+assets = load_assets()
 clock = pygame.time.Clock()
 FPS = 30
+vidas = 1
 
 all_pedra = pygame.sprite.Group()
 all_banana = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
 
-player = Macaco(macaco_img)
+player = Macaco(assets['macaco_img'])
 all_sprites.add(player)
 
-for element in range(6):
-    banana = Banana(banana_img)
+for element in range(4):
+    banana = Banana(assets['banana_img'])
     all_sprites.add(banana)
     all_banana.add(banana)
 
-for elemento in range(8):
-    pedra = Pedra(pedra_img)
+for elemento in range(4):
+    pedra = Pedra(assets['pedra_img'])
     all_sprites.add(pedra)
     all_pedra.add(pedra)
 
@@ -146,27 +154,36 @@ while game:
     pontuacao = pygame.sprite.spritecollide(player, all_banana, True)
 
     if len(colisao) > 0:
-        pedra = Pedra(pedra_img)
+        pedra = Pedra(assets['pedra_img'])
         all_sprites.add(pedra)
         all_pedra.add(pedra)
-        som_pedra.play()
+        assets['som_pedra'].play()
+        vidas -= 1
 
     for bananas in pontuacao:
         pontuacao_inicial += 1
-        banana = Banana(banana_img)
+        banana = Banana(assets['banana_img'])
         all_sprites.add(banana)
         all_banana.add(banana)
-        som_banana.play()
+        assets['som_banana'].play()
+        if pontuacao_inicial % 10 == 0:
+            vidas += 1
 
     window.fill((0,0,0))
-    window.blit(background,(0,0))
+    window.blit(assets['background'],(0,0))
   
     all_sprites.draw(window)
 
-    texto = texto_pontos.render('{}'.format(pontuacao_inicial),True,(255,255,0))
+    texto = assets['texto_pontos'].render('{}'.format(pontuacao_inicial),True,(255,255,0))
     texto_rect = texto.get_rect()
     texto_rect.midtop = (WIDTH-40,10)
     window.blit(texto,texto_rect)
+
+    # Desenhando as vidas
+    texto_coracao = assets['texto_pontos'].render('{}'.format(chr(9829) * vidas),True,(255,0,0))
+    texto_rect_coracao = texto_coracao.get_rect()
+    texto_rect_coracao.topleft = (0, 10)
+    window.blit(texto_coracao,texto_rect_coracao)
 
     pygame.display.update()
 
