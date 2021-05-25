@@ -20,6 +20,8 @@ PEDRA_HEIGHT = 38
 def load_assets ():
     assets = {}
 
+
+    # Carrega imagens do jogo
     assets['background'] = pygame.image.load('assets/img/floresta1.png').convert_alpha()
     assets['background'] = pygame.transform.scale(assets['background'],(WIDTH, HEIGHT))
 
@@ -35,7 +37,7 @@ def load_assets ():
     assets['texto_pontos'] = pygame.font.Font('assets/font/PressStart2P.ttf',28)
 
     # Carrega os sons do jogo
-    #pygame.mixer.music.load('sons/snd/tgfcoder-FrozenJam-SeamlessLoop.ogg')
+    pygame.mixer.music.load('assets/sons/som_fundo.mp3')
     pygame.mixer.music.set_volume(0.4)
     assets['som_pedra'] = pygame.mixer.Sound('assets/sons/fall.wav')
     assets['som_banana'] = pygame.mixer.Sound('assets/sons/banana.ogg')
@@ -109,6 +111,9 @@ assets = load_assets()
 clock = pygame.time.Clock()
 FPS = 30
 vidas = 1
+
+# Som de fundo jogo
+pygame.mixer.music.play(loops=-1)
 
 all_pedra = pygame.sprite.Group()
 all_banana = pygame.sprite.Group()
