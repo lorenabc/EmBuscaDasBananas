@@ -1,6 +1,6 @@
 import pygame
 from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, DEAD
-from assets import BANANA_IMG, MACACO_IMG, PEDRA_IMG, load_assets, SOM_BANANA, SOM_PEDRA, BACKGROUND, TEXTO_PONTOS
+from assets import BANANA_IMG, MACACO_IMG, PEDRA_IMG, load_assets, SOM_BANANA, SOM_PEDRA, BACKGROUND, TEXTO_PONTOS, SOM_VIDA
 from sprites import Macaco, Banana, Pedra
 
 # game_screen
@@ -81,6 +81,7 @@ def game_screen(window):
                 assets[SOM_BANANA].play()
                 if pontuacao_inicial % 10 == 0:
                     vidas += 1
+                    assets[SOM_VIDA].play()
 
             if vidas == 0:
                 state = DEAD
