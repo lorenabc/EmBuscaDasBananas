@@ -30,8 +30,8 @@ class Banana(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.y = random.randint(0, WIDTH-BANANA_WIDTH)
         self.rect.y = random.randint(-100, -BANANA_HEIGHT)
-        self.speedx = random.randint(-3, 3)
-        self.speedy = random.randint(2, 9)
+        self.speedx = random.randint(-1, 3)
+        self.speedy = random.randint(4, 9)
 
     def update(self):
      
@@ -41,8 +41,8 @@ class Banana(pygame.sprite.Sprite):
         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
             self.rect.x = random.randint(0, WIDTH-BANANA_WIDTH)
             self.rect.y = random.randint(-100, -BANANA_HEIGHT)
-            self.speedx = random.randint(-3, 3)
-            self.speedy = random.randint(2, 9)
+            self.speedx = random.randint(-1, 3)
+            self.speedy = random.randint(4, 9)
 
 class Pedra(pygame.sprite.Sprite):
     def __init__(self,img):
@@ -50,10 +50,10 @@ class Pedra(pygame.sprite.Sprite):
 
         self.image = img
         self.rect = self.image.get_rect()
-        self.rect.y = random.randint(0, WIDTH-BANANA_WIDTH)
-        self.rect.y = random.randint(-100, -BANANA_HEIGHT)
-        self.speedx = random.randint(-3, 3)
-        self.speedy = random.randint(2, 9)
+        self.rect.y = random.randint(0, WIDTH-PEDRA_WIDTH)
+        self.rect.y = random.randint(-100, -PEDRA_HEIGHT)
+        self.speedx = random.randint(-1, 3)
+        self.speedy = random.randint(4, 9)
 
     def update(self):
  
@@ -61,7 +61,7 @@ class Pedra(pygame.sprite.Sprite):
         self.rect.y += self.speedy
 
         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
-            self.rect.x = random.randint(0, WIDTH-BANANA_WIDTH)
-            self.rect.y = random.randint(-100, -BANANA_HEIGHT)
-            self.speedx = random.randint(-3, 3)
-            self.speedy = random.randint(2, 9)
+            self.rect.x = random.randint(0, WIDTH-PEDRA_WIDTH)
+            self.rect.y = random.randint(-100, -PEDRA_HEIGHT)
+            self.speedx = random.randint(-1, 3)
+            self.speedy = random.randint(4, 9)
