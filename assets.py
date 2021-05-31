@@ -11,6 +11,7 @@ SOM_PEDRA = 'som_pedra'
 SOM_BANANA = 'som_banana'
 SOM_VIDA = 'som_vida'
 SOM_TELA = 'som_tela'
+TEXTO_PONTOSS = 'texto_pontos'
 
 #assets
 def load_assets ():
@@ -29,6 +30,7 @@ def load_assets ():
     assets[PEDRA_IMG] = pygame.transform.scale(assets['pedra_img'],(PEDRA_WIDTH,PEDRA_HEIGHT))
 
     assets[TEXTO_PONTOS] = pygame.font.Font(os.path.join(FNT_DIR, 'PressStart2P.ttf'), 28)
+    assets[TEXTO_PONTOSS] = pygame.font.Font(os.path.join(FNT_DIR, 'PressStart2P.ttf'), 16)
 
     # Carrega os sons do jogo
     pygame.mixer.music.load(os.path.join(SONS_DIR,'som_jogo.mp3'))
