@@ -1,5 +1,5 @@
 import pygame
-from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED
+from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, DEAD
 from assets import BANANA_IMG, MACACO_IMG, PEDRA_IMG, load_assets, SOM_BANANA, SOM_PEDRA, BACKGROUND, TEXTO_PONTOS
 from sprites import Macaco, Banana, Pedra
 
@@ -83,7 +83,8 @@ def game_screen(window):
                     vidas += 1
 
             if vidas == 0:
-                state = TERMINOU
+                state = DEAD
+                return state
                 
         window.fill((0,0,0))
         window.blit(assets[BACKGROUND],(0,0))

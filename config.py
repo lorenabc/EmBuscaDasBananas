@@ -29,5 +29,7 @@ YELLOW = (255, 255, 0)
 # Estados para controle do fluxo da aplicação
 TERMINOU = 0 
 JOGANDO = 1
-FASE_1 = 2
-FASE_2 = 3
+INIT = 2
+CHOOSE = 3
+DEAD = 4
+QUIT = 5
