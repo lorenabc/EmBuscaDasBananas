@@ -1,5 +1,6 @@
 # ===== Inicialização =====
 # ----- Importa e inicia pacotes
+from init_screen import init_screen
 import pygame
 import random
 from config import WIDTH, HEIGHT, INIT, JOGANDO, CHOOSE, TERMINOU, DEAD
@@ -14,7 +15,7 @@ pygame.mixer.init()
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Em Busca das Bananas')
 
-state = JOGANDO
+state = INIT
 while state != TERMINOU:
     # if state == INIT:
     #     state = init_screen(janela, record)
@@ -24,18 +25,18 @@ while state != TERMINOU:
     #     returns = choose_screen(janela)
     #     state = returns[0]
     #     sprite_jogo = returns[1]
+    if state == INIT:
+        state = init_screen(window)
 
-    if state == JOGANDO:
-        #Recebe o estado do jogo, o score e o record
+    elif state == JOGANDO:
         state = game_screen(window)
         print(state)
-        # state = state[0]
         
     elif state == DEAD:
         state = death_screen(window)
 
     else:
-        state = DEAD
+        state = TERMINOU
 
 
 
