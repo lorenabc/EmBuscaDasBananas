@@ -25,3 +25,21 @@ def init_screen (window):
     window.blit(welcome_surface, welcome_rect)
     
     assets[SOM_TELA].play(loops=-1).set_volume(0.2)
+
+    game = True
+    while game:
+        # Processa os eventos (mouse, teclado, botão, etc).
+        for event in pygame.event.get():
+            # Verifica se foi fechado.
+            if event.type == pygame.QUIT:
+                state = TERMINOU
+                game = False
+            # Verifica se alguma tecla foi apertada:
+            if event.type == pygame.KEYUP:
+                key = pygame.key.get_pressed()
+                # Verifica se return foi apertado
+                if event.key == pygame.K_RETURN:
+                    state = JOGANDO
+                    game = False
+        pygame.display.flip()
+    return state
