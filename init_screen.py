@@ -40,6 +40,7 @@ def init_screen (window):
                 # Verifica se return foi apertado
                 if event.key == pygame.K_RETURN:
                     state = JOGANDO
+                    pygame.mixer.pause()
                     game = False
         pygame.display.flip()
     return state
