@@ -35,9 +35,9 @@ def init_screen (window):
 
     all_banana = pygame.sprite.Group()
 
-    # for element in range(2):
-    #     banana = Banana(assets[BANANA_IMG])
-    #     all_banana.add(banana)
+    for element in range(2):
+        banana = Banana(assets[BANANA_IMG])
+        all_banana.add(banana)
 
     game = True
     while game:
