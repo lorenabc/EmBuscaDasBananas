@@ -3,7 +3,7 @@
 from init_screen import init_screen
 import pygame
 import random
-from config import WIDTH, HEIGHT, INIT, JOGANDO, CHOOSE, TERMINOU, DEAD
+from config import WIDTH, HEIGHT, INIT, JOGANDO, TERMINOU, DEAD
 from game_screen import game_screen
 from death_screen import death_screen
 
@@ -17,14 +17,6 @@ pygame.display.set_caption('Em Busca das Bananas')
 
 state = INIT
 while state != TERMINOU:
-    # if state == INIT:
-    #     state = init_screen(janela, record)
-
-    # if state == CHOOSE:
-    #     #Recebe o estado do jogo e o sprite escolhido pelo jogador
-    #     returns = choose_screen(janela)
-    #     state = returns[0]
-    #     sprite_jogo = returns[1]
     if state == INIT:
         state = init_screen(window)
 
@@ -37,8 +29,6 @@ while state != TERMINOU:
 
     else:
         state = TERMINOU
-
-
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados

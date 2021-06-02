@@ -1,5 +1,5 @@
 import pygame
-from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, DEAD
+from config import FPS, WIDTH, YELLOW, RED, DEAD
 from assets import BANANA_IMG, MACACO_IMG, PEDRA_IMG, load_assets, SOM_BANANA, SOM_PEDRA, BACKGROUND, TEXTO_PONTOS, SOM_VIDA
 from sprites import Macaco, Banana, Pedra
 
@@ -8,7 +8,6 @@ def game_screen(window):
 
     assets = load_assets()
     clock = pygame.time.Clock()
-    FPS = 30
     vidas = 1
 
     # Som de fundo jogo
@@ -35,8 +34,6 @@ def game_screen(window):
 
     TERMINOU = 0 
     JOGANDO = 1
-    FASE_1 = 2
-    FASE_2 = 3
 
     state = JOGANDO
 
