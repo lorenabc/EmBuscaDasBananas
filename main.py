@@ -7,7 +7,6 @@ from config import WIDTH, HEIGHT, INIT, JOGANDO, TERMINOU, DEAD
 from game_screen import game_screen
 from death_screen import death_screen
 
-
 pygame.init()
 pygame.mixer.init()
 
@@ -22,7 +21,6 @@ while state != TERMINOU:
 
     elif state == JOGANDO:
         state = game_screen(window)
-        print(state)
         
     elif state == DEAD:
         state = death_screen(window)

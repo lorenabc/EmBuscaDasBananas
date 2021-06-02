@@ -1,5 +1,5 @@
 import pygame
-from config import FPS, WIDTH, YELLOW, RED, DEAD
+from config import BLACK, FPS, WIDTH, YELLOW, RED, DEAD
 from assets import BANANA_IMG, MACACO_IMG, PEDRA_IMG, load_assets, SOM_BANANA, SOM_PEDRA, BACKGROUND, TEXTO_PONTOS, SOM_VIDA
 from sprites import Macaco, Banana, Pedra
 
@@ -84,11 +84,12 @@ def game_screen(window):
                 state = DEAD
                 return state
                 
-        window.fill((0,0,0))
+        window.fill(BLACK)
         window.blit(assets[BACKGROUND],(0,0))
     
         all_sprites.draw(window)
 
+        # Desenhando a pontuação
         texto = assets[TEXTO_PONTOS].render('{}'.format(pontuacao_inicial),True,(YELLOW))
         texto_rect = texto.get_rect()
         texto_rect.midtop = (WIDTH-40,10)
