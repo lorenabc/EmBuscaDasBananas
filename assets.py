@@ -12,13 +12,16 @@ SOM_BANANA = 'som_banana'
 SOM_VIDA = 'som_vida'
 SOM_TELA = 'som_tela'
 TEXTO_PONTOSS = 'texto_pontos'
+BACKGROUND_INICIAL = 'background_inicial'
 
-#assets
 def load_assets ():
     assets = {}
 
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR,'floresta1.png')).convert_alpha()
     assets[BACKGROUND] = pygame.transform.scale(assets['background'],(WIDTH, HEIGHT))
+
+    assets[BACKGROUND_INICIAL] = pygame.image.load(os.path.join(IMG_DIR,'inicial.png')).convert_alpha()
+    assets[BACKGROUND_INICIAL] = pygame.transform.scale(assets['background_inicial'],(WIDTH,HEIGHT))
 
     assets[BANANA_IMG] = pygame.image.load(os.path.join(IMG_DIR,'banana.png')).convert_alpha()
     assets[BANANA_IMG] = pygame.transform.scale(assets['banana_img'],(BANANA_WIDTH,BANANA_HEIGHT))
