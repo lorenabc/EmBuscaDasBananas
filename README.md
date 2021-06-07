@@ -10,4 +10,6 @@ Controles para utilizar o jogo: Barra (para iniciar o jogo), seta para a direita
 
 Funcionamento: Ao iniciar o jogo o usuário possui uma vida, ele deve movimentar o personagem "Macaquinho" com as setas que vão para a direita e para a esquerda. A cada 10 bananas captadas pelo jogador, ele ganha 1 vida. Agora é só desviar-se das pedras e sobreviver :)  
 
+PARA RODAR O JOGO BASTA DAR UM "RUN" NO ARQUIVO "main.py"
+
 Link para o vídeo no YouTube: https://youtu.be/oCed_c5li6A
