@@ -1,6 +1,7 @@
 # EmBuscaDasBananas
 
 Dupla: Carlos Felipe e Lorena Budin
+/
 Nome do Jogo: Em Busca das Bananas
 
 Objetivo: O usuário deve pegar o maior número de bananas e desviar-se das pedras. 
