@@ -3,6 +3,9 @@ from config import BLACK, FPS, WIDTH, YELLOW, RED, DEAD
 from assets import BANANA_IMG, MACACO_IMG, PEDRA_IMG, load_assets, SOM_BANANA, SOM_PEDRA, BACKGROUND, TEXTO_PONTOS, SOM_VIDA
 from sprites import Macaco, Banana, Pedra
 
+# APS DESAGIL 
+velx = 8
+
 # game_screen
 def game_screen(window):
 
@@ -47,15 +50,15 @@ def game_screen(window):
             if state == JOGANDO:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        player.speedx -= 8
+                        player.speedx -= velx
                     if event.key == pygame.K_RIGHT:
-                        player.speedx += 8
+                        player.speedx += velx
                     
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT:
-                        player.speedx += 8
+                        player.speedx += velx
                     if event.key == pygame.K_RIGHT:
-                        player.speedx -= 8
+                        player.speedx -= velx
 
         all_sprites.update()
 
